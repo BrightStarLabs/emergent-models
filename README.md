@@ -80,4 +80,4 @@ For support, please:
 
 - Open an issue in the [GitHub repository](https://github.com/BrightStarLabs/emergent-models/issues)
 - Join our [Discord community](#discord-link)
-- Email support@brightstarlabs.com
+- Email info@brightstarlabs.ai
