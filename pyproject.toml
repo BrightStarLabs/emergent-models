@@ -163,3 +163,16 @@ exclude_lines = [
     "if __name__ == .__main__.:",
     "if TYPE_CHECKING:",
 ]
+[tool.poetry.group.visualization.dependencies]
+seaborn = "^0.13.2"
+
+
+[tool.poetry.group.advanced-viz.dependencies]
+pillow = "^11.3.0"
+imageio = "^2.37.0"
+
+
+[tool.poetry.group.jupyter.dependencies]
+ipywidgets = "^8.1.7"
+jupyterlab-widgets = "^3.0.15"
+
