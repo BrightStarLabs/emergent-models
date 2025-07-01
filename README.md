@@ -1,14 +1,13 @@
 # Emergent Models
 
-[![License](https://img.shields.io/badge/license-MIT-gre.svg)](LICENSE)
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.13%2B-blue.svg)](https://www.python.org/downloads/)
 
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
+- [Quick Start](#quick-start)
 - [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)
@@ -29,10 +28,9 @@ Emergent Models is a project focused on developing and exploring emergent behavi
 ## Installation
 
 ### Prerequisites
-- Python 3.8 or higher
+- Python 3.13 or higher
 - Git
-- [Additional dependencies as needed]
-- [uv](https://docs.astral.sh/uv/) (optional)
+- [poetry](https://python-poetry.org/)
 
 ### Installation Steps
 
@@ -41,26 +39,19 @@ Emergent Models is a project focused on developing and exploring emergent behavi
 git clone https://github.com/BrightStarLabs/emergent-models.git
 cd emergent-models
 
-# Create and activate virtual environment
-python -m venv venv --prompt em # uv venv .venv --prompt em
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
 # Install dependencies
-pip install -r requirements.txt # or uv pip install -r requirements.txt
+poetry install
 ```
 
-## Usage
+## Quick Start
 
 ### Basic Example
+Try this and play around with the parameters:
+```bash
+poetry run python examples/training_debugger.py --pop-size 500 --generations 300 --batch-size 30 --elite-fraction 0.1
+```
 
 ## Configuration
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `MODEL_CONFIG` | Path to model configuration file | `config/model.yaml` |
-| `DATA_PATH` | Path to data directory | `data/` |
 
 ## Development
 
