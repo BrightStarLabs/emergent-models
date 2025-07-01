@@ -1,0 +1,165 @@
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "emergent-models"
+version = "0.1.0"
+description = "A PyTorch-like library for training cellular automata and emergent models"
+readme = "README.md"
+authors = [
+    {name = "Umut Eser",email = "umuteser@gmail.com"}
+]
+maintainers = [
+    {name = "Umut Eser", email = "umuteser@gmail.com"},
+]
+requires-python = ">=3.13"
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+keywords = [
+    "cellular-automata",
+    "emergent-models",
+    "complex-systems",
+    "artificial-life",
+    "genetic-algorithms",
+    "evolutionary-computation",
+]
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy>=1.7.0",
+    "matplotlib>=3.3.0",
+    "tqdm>=4.62.0",
+    "numba>=0.55.0",
+    "seaborn (>=0.13.2,<0.14.0)",
+    "ipywidgets (>=8.1.7,<9.0.0)",
+    "jupyterlab-widgets (>=3.0.15,<4.0.0)",
+    "plotly (>=6.1.2,<7.0.0)",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "pytest-xdist>=2.5.0",
+    "black>=22.0.0",
+    "isort>=5.10.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+    "pre-commit>=2.17.0",
+]
+docs = [
+    "sphinx>=4.5.0",
+    "sphinx-rtd-theme>=1.0.0",
+    "sphinx-autodoc-typehints>=1.18.0",
+    "nbsphinx>=0.8.8",
+]
+gpu = [
+    "cupy>=10.0.0",
+    "numba>=0.55.0",
+]
+torch = [
+    "torch>=1.10.0",
+]
+visualization = [
+    "pillow>=9.0.0",
+    "imageio>=2.16.0",
+    "plotly>=5.6.0",
+    "seaborn>=0.11.2",
+]
+all = [
+    # Dev dependencies
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "pytest-xdist>=2.5.0",
+    "black>=22.0.0",
+    "isort>=5.10.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+    "pre-commit>=2.17.0",
+    # Docs dependencies
+    "sphinx>=4.5.0",
+    "sphinx-rtd-theme>=1.0.0",
+    "sphinx-autodoc-typehints>=1.18.0",
+    "nbsphinx>=0.8.8",
+    # GPU dependencies
+    "cupy>=10.0.0",
+    "numba>=0.55.0",
+    # Torch dependencies
+    "torch>=1.10.0",
+    # Visualization dependencies
+    "pillow>=9.0.0",
+    "imageio>=2.16.0",
+    "plotly>=5.6.0",
+    "seaborn>=0.11.2",
+]
+
+[tool.setuptools]
+packages = ["emergent_models"]
+
+[tool.setuptools.dynamic]
+version = {attr = "emergent_models.__version__.__version__"}
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["emergent_models"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = "matplotlib.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.coverage.run]
+source = ["emergent_models"]
+omit = [
+    "*/tests/*",
+    "*/examples/*",
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
