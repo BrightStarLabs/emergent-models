@@ -78,7 +78,7 @@ class Em43Encoder(Encoder):
 
         Returns
         -------
-        np.ndarray, shape (P, B, T)
+        np.ndarray, shape (B, T)
             Batch of initial CA tapes: [programme] BB 0^(inp+1) R 0...
         """
         window = self.space.size_hint()
