@@ -49,7 +49,7 @@ poetry install
 
 Try this and play around with the parameters:
 ```bash
-poetry run python examples/training_debugger.py --pop-size 500 --generations 300 --batch-size 30 --elite-fraction 0.1
+poetry run python examples/training_playground.py --pop-size 500 --generations 300 --batch-size 30 --elite-fraction 0.1
 ```
 
 Or if you prefer jupyter notebook, checkout `examples/doubling.ipynb`
