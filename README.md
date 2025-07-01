@@ -51,9 +51,13 @@ Try this and play around with the parameters:
 ```bash
 poetry run python examples/training_playground.py --pop-size 500 --generations 300 --batch-size 30 --elite-fraction 0.1
 ```
+You should be able to see something like this at the end of the training:
+
+![image](https://github.com/user-attachments/assets/e07f6618-ef05-4b02-8cab-3b45e0807b65)
+
 
 Or if you prefer jupyter notebook, checkout `examples/doubling.ipynb`
-
+Notebook has a deeper dive into the components and step by step how it works.
 
 ## Configuration
 
