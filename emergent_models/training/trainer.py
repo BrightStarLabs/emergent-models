@@ -14,6 +14,7 @@ import numba as nb
 from ..core.base import Encoder, FitnessFn, Monitor, ConsoleLogger
 from ..simulation.simulator import Simulator
 from ..training.optimizer import GAOptimizer
+from ..visualization.base import StateAwareVisualizer
 from ..genome import Genome
 
 
@@ -48,7 +49,7 @@ class Trainer:
     
     def __init__(self, encoder: Encoder, simulator: Simulator,
                  fitness_fn: FitnessFn, optimizer: GAOptimizer,
-                 monitor: Optional[Monitor] = None):
+                 monitor: Optional[Monitor] = None, visualizer: Optional[StateAwareVisualizer] = None):
         """
         Initialize trainer with all components.
 
@@ -70,6 +71,7 @@ class Trainer:
         self.fitness_fn = fitness_fn
         self.optimizer = optimizer
         self.monitor = monitor or ConsoleLogger()
+        self.visualizer = visualizer
 
         # Pre-allocate evaluation buffers for maximum performance
         self._init_evaluation_buffers()
@@ -158,6 +160,8 @@ class Trainer:
             # Direct array assignment (faster than individual element access)
             np.copyto(self._rule_buffer[i], genomes[i].rule.table)
             np.copyto(self._prog_buffer[i], genomes[i].programme.code)
+        
+        return self._rule_buffer[:pop_size], self._prog_buffer[:pop_size]
     
     def fit(self, inputs: np.ndarray, targets: np.ndarray, generations: int = 100,
             test_inputs: Optional[np.ndarray] = None,
